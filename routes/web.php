@@ -38,6 +38,17 @@ Route::get('clear-cache', function () {
     </div>';
 })->name('clear.cache');
 
+// Run Migrations & Seeders Route (For Live Server / cPanel)
+Route::get('run-migrate', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    Artisan::call('db:seed', ['--force' => true]);
+    return '<div style="font-family:sans-serif; text-align:center; padding:50px;">
+        <h2 style="color:#10b981;">✅ Database Migrated & Seeded Successfully!</h2>
+        <p>All tables created and initial demo data populated.</p>
+        <a href="'.url('/').'" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#10b981; color:#fff; text-decoration:none; border-radius:5px; font-weight:bold;">Go to Dashboard</a>
+    </div>';
+})->name('run.migrate');
+
 // Auth & Language Routes
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('login', [AuthController::class, 'login']);

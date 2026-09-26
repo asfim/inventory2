@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ file_exists(public_path('css/app.css')) ? filemtime(public_path('css/app.css')) : '1.0' }}">
     
     @stack('styles')
 </head>
@@ -45,7 +45,7 @@
                 <div class="px-3 my-2">
                     <a href="{{ route('sales.pos') }}" class="btn btn-warning w-100 fw-bold d-flex align-items-center justify-content-center gap-2 text-dark shadow-sm">
                         <i class="fa-solid fa-cash-register"></i>
-                        <span>{{ lang('POS काउंटर সেল', 'POS Terminal') }}</span>
+                        <span>{{ lang('POS কাউন্টার সেল', 'POS Terminal') }}</span>
                     </a>
                 </div>
 
