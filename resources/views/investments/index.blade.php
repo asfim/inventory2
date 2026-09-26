@@ -61,7 +61,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($investments as $inv)
+                    @foreach($investments as $inv)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td class="fw-bold text-success">{{ $inv->investor_name }}</td>
@@ -72,11 +72,7 @@
                             <td>{{ $inv->note ?? 'N/A' }}</td>
                             <td>{{ $inv->creator->name ?? 'System' }}</td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" class="text-center py-4 text-muted">{{ lang('কোন বিনিয়োগ রেকর্ড পাওয়া যায়নি', 'No investment records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

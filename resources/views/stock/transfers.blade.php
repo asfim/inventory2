@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($transfers as $t)
+                    @foreach($transfers as $t)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><code>{{ $t->transfer_no }}</code></td>
@@ -46,11 +46,7 @@
                             </td>
                             <td><span class="badge bg-success">{{ lang('সম্পন্ন', 'Completed') }}</span></td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="7" class="text-center py-4 text-muted">{{ lang('কোন ট্রান্সফার রেকর্ড পাওয়া যায়নি', 'No transfer records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

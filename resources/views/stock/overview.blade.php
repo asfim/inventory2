@@ -66,7 +66,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($products as $p)
+                    @foreach($products as $p)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
@@ -91,11 +91,7 @@
                                 @endif
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="9" class="text-center py-4 text-muted">{{ lang('কোন তথ্য পাওয়া যায়নি', 'No stock records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

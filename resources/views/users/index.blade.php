@@ -59,65 +59,67 @@
                                 @endif
                             </td>
                         </tr>
-
-                        <!-- Edit Modal -->
-                        <div class="modal fade" id="editUserModal{{ $u->id }}" tabindex="-1">
-                            <div class="modal-dialog">
-                                <form action="{{ route('users.update', $u->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-success text-white">
-                                            <h5 class="modal-title fw-bold">ইউজার তথ্য সম্পাদনা</h5>
-                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">নাম <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" class="form-control" value="{{ $u->name }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">ইমেইল <span class="text-danger">*</span></label>
-                                                <input type="email" name="email" class="form-control" value="{{ $u->email }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">ফোন নম্বর</label>
-                                                <input type="text" name="phone" class="form-control" value="{{ $u->phone }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">রোল (Role) <span class="text-danger">*</span></label>
-                                                <select name="role_id" class="form-select" required>
-                                                    @foreach($roles as $r)
-                                                        <option value="{{ $r->id }}" {{ $u->role_id == $r->id ? 'selected' : '' }}>{{ $r->display_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">নতুন পাসওয়ার্ড (ঐচ্ছিক)</label>
-                                                <input type="password" name="password" class="form-control" placeholder="পরিবর্তন না করতে ফাঁকা রাখুন">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">স্ট্যাটাস</label>
-                                                <select name="status" class="form-select">
-                                                    <option value="1" {{ $u->status ? 'selected' : '' }}>সক্রিয়</option>
-                                                    <option value="0" {{ !$u->status ? 'selected' : '' }}>নিষ্ক্রিয়</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                                            <button type="submit" class="btn btn-success fw-bold">আপডেট করুন</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<!-- Edit Modals (outside table) -->
+@foreach($users as $u)
+    <div class="modal fade" id="editUserModal{{ $u->id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <form action="{{ route('users.update', $u->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title fw-bold">ইউজার তথ্য সম্পাদনা</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">নাম <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control" value="{{ $u->name }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">ইমেইল <span class="text-danger">*</span></label>
+                            <input type="email" name="email" class="form-control" value="{{ $u->email }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">ফোন নম্বর</label>
+                            <input type="text" name="phone" class="form-control" value="{{ $u->phone }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">রোল (Role) <span class="text-danger">*</span></label>
+                            <select name="role_id" class="form-select" required>
+                                @foreach($roles as $r)
+                                    <option value="{{ $r->id }}" {{ $u->role_id == $r->id ? 'selected' : '' }}>{{ $r->display_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">নতুন পাসওয়ার্ড (ঐচ্ছিক)</label>
+                            <input type="password" name="password" class="form-control" placeholder="পরিবর্তন না করতে ফাঁকা রাখুন">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">স্ট্যাটাস</label>
+                            <select name="status" class="form-select">
+                                <option value="1" {{ $u->status ? 'selected' : '' }}>সক্রিয়</option>
+                                <option value="0" {{ !$u->status ? 'selected' : '' }}>নিষ্ক্রিয়</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                        <button type="submit" class="btn btn-success fw-bold">আপডেট করুন</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endforeach
 
 <!-- Create Modal -->
 <div class="modal fade" id="createUserModal" tabindex="-1">

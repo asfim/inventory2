@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($purchases as $p)
+                    @foreach($purchases as $p)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
@@ -87,11 +87,7 @@
                                 </div>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="10" class="text-center py-4 text-muted">{{ lang('কোন পারচেজ রেকর্ড পাওয়া যায়নি', 'No purchase records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

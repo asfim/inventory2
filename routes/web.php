@@ -21,7 +21,22 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+// Cache Clear Route (For Live Server / cPanel)
+Route::get('clear-cache', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('optimize:clear');
+    return '<div style="font-family:sans-serif; text-align:center; padding:50px;">
+        <h2 style="color:#10b981;">✅ All Laravel Caches Cleared Successfully!</h2>
+        <p>Config, Cache, Route, View and Optimize caches cleared.</p>
+        <a href="'.url('/').'" style="display:inline-block; margin-top:15px; padding:10px 20px; background:#10b981; color:#fff; text-decoration:none; border-radius:5px; font-weight:bold;">Go to Dashboard</a>
+    </div>';
+})->name('clear.cache');
 
 // Auth & Language Routes
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');

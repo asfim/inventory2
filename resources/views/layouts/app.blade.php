@@ -284,10 +284,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+        $.fn.dataTable.ext.errMode = 'none';
         $(document).ready(function() {
-            // Disable DataTables browser alert popups
-            $.fn.dataTable.ext.errMode = 'none';
-
             // Sidebar Toggle
             $("#sidebarToggle").click(function(e) {
                 e.preventDefault();
@@ -301,6 +299,8 @@
                     "search": "{{ lang('খুঁজুন:', 'Search:') }}",
                     "lengthMenu": "{{ lang('প্রদর্শন _MENU_ টি', 'Show _MENU_ entries') }}",
                     "info": "{{ lang('দেখাচ্ছে _START_ থেকে _END_ মোট _TOTAL_ টির মধ্যে', 'Showing _START_ to _END_ of _TOTAL_ entries') }}",
+                    "zeroRecords": "{{ lang('কোন তথ্য পাওয়া যায়নি', 'No matching records found') }}",
+                    "emptyTable": "{{ lang('কোন তথ্য পাওয়া যায়নি', 'No data available in table') }}",
                     "paginate": {
                         "first": "{{ lang('প্রথম', 'First') }}",
                         "last": "{{ lang('শেষ', 'Last') }}",

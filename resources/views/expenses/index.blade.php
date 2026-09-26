@@ -67,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($expenses as $e)
+                    @foreach($expenses as $e)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $e->expense_date->format('d M, Y') }}</td>
@@ -84,11 +84,7 @@
                             </td>
                             <td>{{ $e->creator->name ?? 'System' }}</td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" class="text-center py-4 text-muted">{{ lang('কোন খরচের রেকর্ড পাওয়া যায়নি', 'No expense records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

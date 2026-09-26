@@ -72,53 +72,55 @@
                                 <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editMethodModal{{ $m->id }}"><i class="fa-solid fa-pen"></i></button>
                             </td>
                         </tr>
-
-                        <!-- Edit Modal -->
-                        <div class="modal fade" id="editMethodModal{{ $m->id }}" tabindex="-1">
-                            <div class="modal-dialog">
-                                <form action="{{ route('payment-methods.update', $m->id) }}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-success text-white">
-                                            <h5 class="modal-title fw-bold">পেমেন্ট মেথড সম্পাদনা</h5>
-                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">মেথড নাম <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" class="form-control" value="{{ $m->name }}" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">অ্যাকাউন্ট নম্বর</label>
-                                                <input type="text" name="account_number" class="form-control" value="{{ $m->account_number }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">অ্যাকাউন্ট হোল্ডার</label>
-                                                <input type="text" name="account_holder" class="form-control" value="{{ $m->account_holder }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label fw-semibold">স্ট্যাটাস</label>
-                                                <select name="status" class="form-select">
-                                                    <option value="1" {{ $m->status ? 'selected' : '' }}>সক্রিয়</option>
-                                                    <option value="0" {{ !$m->status ? 'selected' : '' }}>নিষ্ক্রিয়</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                                            <button type="submit" class="btn btn-success fw-bold">আপডেট করুন</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<!-- Edit Modals (outside table) -->
+@foreach($methods as $m)
+    <div class="modal fade" id="editMethodModal{{ $m->id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <form action="{{ route('payment-methods.update', $m->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title fw-bold">পেমেন্ট মেথড সম্পাদনা</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">মেথড নাম <span class="text-danger">*</span></label>
+                            <input type="text" name="name" class="form-control" value="{{ $m->name }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">অ্যাকাউন্ট নম্বর</label>
+                            <input type="text" name="account_number" class="form-control" value="{{ $m->account_number }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">অ্যাকাউন্ট হোল্ডার</label>
+                            <input type="text" name="account_holder" class="form-control" value="{{ $m->account_holder }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">স্ট্যাটাস</label>
+                            <select name="status" class="form-select">
+                                <option value="1" {{ $m->status ? 'selected' : '' }}>সক্রিয়</option>
+                                <option value="0" {{ !$m->status ? 'selected' : '' }}>নিষ্ক্রিয়</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                        <button type="submit" class="btn btn-success fw-bold">আপডেট করুন</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endforeach
 
 <!-- Create Modal -->
 <div class="modal fade" id="createMethodModal" tabindex="-1">

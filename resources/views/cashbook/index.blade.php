@@ -77,7 +77,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($transactions as $t)
+                    @foreach($transactions as $t)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $t->created_at->format('h:i A') }}</td>
@@ -89,11 +89,7 @@
                             <td>{{ $t->description ?? 'N/A' }}</td>
                             <td>{{ $t->creator->name ?? 'System' }}</td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="9" class="text-center py-4 text-muted">{{ lang('এই তারিখে কোন ক্যাশ ট্রানজেকশন এন্ট্রি নেই', 'No cash transactions for this date') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -57,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($sales as $s)
+                    @foreach($sales as $s)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
@@ -89,11 +89,7 @@
                                 </div>
                             </td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="11" class="text-center py-4 text-muted">{{ lang('কোন বিক্রয় রেকর্ড পাওয়া যায়নি', 'No sales records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>

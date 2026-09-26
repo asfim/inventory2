@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody class="fs-7">
-                    @forelse($adjustments as $a)
+                    @foreach($adjustments as $a)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><code>{{ $a->adjustment_no }}</code></td>
@@ -54,11 +54,7 @@
                             <td>{{ $a->creator->name ?? 'System' }}</td>
                             <td>{{ $a->note ?? 'N/A' }}</td>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" class="text-center py-4 text-muted">{{ lang('কোন এডজাস্টমেন্ট রেকর্ড পাওয়া যায়নি', 'No adjustment records found') }}</td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
             </table>
         </div>
