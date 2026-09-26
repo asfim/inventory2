@@ -1,0 +1,166 @@
+:root {
+    --primary-color: #0F5132;
+    --primary-dark: #052C1E;
+    --primary-light: #198754;
+    --accent-color: #20c997;
+    --bg-body: #f4f6f9;
+    --card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --hover-shadow: 0 0.5rem 1rem rgba(15, 81, 50, 0.12);
+}
+
+body {
+    font-family: 'Hind Siliguri', 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-body);
+    color: #212529;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 260px;
+    background: linear-gradient(180deg, #052C1E 0%, #0F5132 100%);
+    color: #fff;
+    transition: margin 0.25s ease-out;
+    z-index: 1000;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    margin: 0.2rem 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav-link i {
+    width: 24px;
+    font-size: 1.1rem;
+    margin-right: 0.75rem;
+}
+
+.sidebar-nav-link:hover, .sidebar-nav-link.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.sidebar-group-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 1rem 1.5rem 0.25rem;
+    font-weight: 700;
+}
+
+/* Top Navbar */
+.top-navbar {
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* Dashboard Summary Cards */
+.card-stat {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.card-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
+}
+
+.card-stat .stat-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.bg-emerald-gradient {
+    background: linear-gradient(135deg, #0F5132 0%, #198754 100%);
+    color: #fff;
+}
+
+.bg-teal-gradient {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    color: #fff;
+}
+
+.bg-amber-gradient {
+    background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+    color: #fff;
+}
+
+.bg-rose-gradient {
+    background: linear-gradient(135deg, #dc3545 0%, #f8d7da 100%);
+    color: #fff;
+}
+
+/* Tables */
+.table-custom {
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table-custom th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* POS Screen */
+.pos-product-card {
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.pos-product-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--hover-shadow);
+    transform: scale(1.02);
+}
+
+.pos-cart-table {
+    font-size: 0.9rem;
+}
+
+/* Badges */
+.badge-stock-in { background-color: #198754; color: white; }
+.badge-stock-low { background-color: #fd7e14; color: white; }
+.badge-stock-out { background-color: #dc3545; color: white; }
+.badge-expiry-warning { background-color: #ffc107; color: #212529; }
+.badge-expiry-danger { background-color: #dc3545; color: white; }
+
+/* Print Styling */
+@media print {
+    .no-print { display: none !important; }
+    body { background: #fff !important; }
+    #sidebar-wrapper { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    .printable-invoice { box-shadow: none !important; border: none !important; }
+}
